@@ -1,0 +1,27 @@
+.section {
+  background-image: url(../../images/Hero_image.jpg);
+  background-repeat: no-repeat;
+}
+
+.container {
+  padding: 260px 64px;
+}
+
+.title {
+  font-size: 48px;
+  line-height: 0.67;
+  color: var(--inputs);
+
+  margin-bottom: 16px;
+}
+
+.subTitle {
+  line-height: 1.33;
+  color: var(--inputs);
+
+  margin-bottom: 40px;
+}
+
+.btn {
+  width: 173px;
+}
