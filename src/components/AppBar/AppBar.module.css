@@ -1,7 +1,18 @@
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #2a363b;
+  border-bottom: 1px solid var(--badges);
+  padding: 24px 64px;
+  width: 1440px;
+  height: 72px;
+}
+
+.logo {
+  padding: 24px 0;
+}
+
+.icon {
+  background: transparent;
+  fill: none;
+  stroke: currentColor;
 }

@@ -1,11 +1,17 @@
+.navigation {
+  margin: 0 auto;
+}
+
 .link {
   display: inline-block;
   text-decoration: none;
-  padding: 12px;
+  padding: 24px 0;
   font-weight: 700;
-  color: #2a363b;
+  color: var(--main);
+  margin-right: 32px;
 }
 
-.link.active {
-  color: #e84a5f;
+.active {
+  composes: link;
+  color: var(--button-hover);
 }

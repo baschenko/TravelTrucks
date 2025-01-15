@@ -1,4 +1,4 @@
-import Button from '../../components/Button/Button.jsx';
+import { NavLink } from 'react-router-dom';
 import styled from './HomePage.module.css';
 
 const HomePage = () => {
@@ -9,7 +9,10 @@ const HomePage = () => {
         <h2 className={styled.subTitle}>
           You can find everything you want in our catalog
         </h2>
-        <Button className={styled.btn}>View Now</Button>
+
+        <NavLink to={'/catalog'} className={styled.btn}>
+          View Now
+        </NavLink>
       </div>
     </div>
   );

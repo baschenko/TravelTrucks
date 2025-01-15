@@ -8,11 +8,9 @@
 
   padding: 16px;
   border-radius: 200px;
-  /* min-width: 166px;
-  height: 56px; */
+
   cursor: pointer;
 
-  /* border: none; */
   text-align: center;
   background-color: var(--button);
 }
