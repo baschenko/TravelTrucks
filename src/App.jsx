@@ -1,6 +1,7 @@
 import {
   // lazy,
   Suspense,
+  useEffect,
   // useEffect
 } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -14,6 +15,9 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
 import CampersFeatures from './components/CampersFeatures/CampersFeatures.jsx';
 import CampersReviews from './components/CampersReviews/CampersReviews.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
+import { useDispatch } from 'react-redux';
+import { fetchCampers } from './redux/campers/operations.js';
+
 // import RestrictedRuote from './RestrictedRuote';
 // import PrivateRoute from './PrivateRoute';
 
@@ -31,6 +35,12 @@ export default function App() {
   // useEffect(() => {
   //   // dispatch(refreshUser());
   // }, [dispatch]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCampers());
+  }, [dispatch]);
 
   return (
     <Layout>

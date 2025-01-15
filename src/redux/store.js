@@ -27,6 +27,7 @@ const persistedAuthReducer = persistReducer(persistAuthConfig, campersReducer);
 export const store = configureStore({
   reducer: {
     campers: persistedAuthReducer,
+    // campers: campersReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

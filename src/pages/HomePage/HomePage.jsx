@@ -1,16 +1,16 @@
 import { NavLink } from 'react-router-dom';
-import styled from './HomePage.module.css';
+import css from './HomePage.module.css';
 
 const HomePage = () => {
   return (
-    <div className={styled.section}>
-      <div className={styled.container}>
-        <h1 className={styled.title}>Campers of your dreams</h1>
-        <h2 className={styled.subTitle}>
+    <div className={css.section}>
+      <div className={css.container}>
+        <h1 className={css.title}>Campers of your dreams</h1>
+        <h2 className={css.subTitle}>
           You can find everything you want in our catalog
         </h2>
 
-        <NavLink to={'/catalog'} className={styled.btn}>
+        <NavLink to={'/catalog'} className={css.btn}>
           View Now
         </NavLink>
       </div>
