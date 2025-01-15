@@ -1,6 +1,7 @@
 .section {
   background-image: url(../../images/Hero_image.jpg);
   background-repeat: no-repeat;
+  width: 1440px;
 }
 
 .container {
