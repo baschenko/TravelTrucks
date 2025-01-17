@@ -13,6 +13,9 @@ const Categories = ({ camper }) => {
       {camper.refrigerator && (
         <CategoriesItem icon="icon-refrigerator" text="refrigerator" />
       )}
+      {camper.bathroom && (
+        <CategoriesItem icon="icon-bathroom" text="bathroom" />
+      )}
       {camper.microwave && (
         <CategoriesItem icon="icon-microwave" text="microwave" />
       )}

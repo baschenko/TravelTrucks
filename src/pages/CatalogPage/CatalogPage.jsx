@@ -4,6 +4,8 @@ import {
   selectTotal,
 } from '../../redux/campers/selectors.js';
 import CampersList from '../../components/CampersList/CampersList.jsx';
+import Filter from '../../components/Filter/Filter.jsx';
+import css from './CatalogPage.module.css';
 
 const CatalogPage = () => {
   const campers = useSelector(selectAllCampers);
@@ -12,7 +14,8 @@ const CatalogPage = () => {
   console.log('campers: ', campers);
   console.log('total: ', total);
   return (
-    <div>
+    <div className={css.container}>
+      <Filter />
       {campers !== null && (
         <ul className="">
           <CampersList campers={campers} />
