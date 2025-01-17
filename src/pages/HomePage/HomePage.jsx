@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import css from './HomePage.module.css';
 
 const HomePage = () => {
@@ -10,9 +10,9 @@ const HomePage = () => {
           You can find everything you want in our catalog
         </h2>
 
-        <NavLink to={'/catalog'} className={css.btn}>
+        <Link to={'/catalog'} className={css.btn}>
           View Now
-        </NavLink>
+        </Link>
       </div>
     </div>
   );

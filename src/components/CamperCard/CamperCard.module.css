@@ -95,3 +95,20 @@
   width: 525px;
   margin-bottom: 24px;
 }
+
+.link {
+  display: block;
+  letter-spacing: -0.01em;
+  color: var(--white);
+
+  padding: 16px;
+  border-radius: 200px;
+  width: 166px;
+
+  text-align: center;
+  background-color: var(--button);
+}
+
+.link:hover {
+  background-color: var(--button-hover);
+}

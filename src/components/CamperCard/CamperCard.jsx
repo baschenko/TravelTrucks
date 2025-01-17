@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import imagesDefault from '../../images/default.png';
-import Button from '../Button/Button.jsx';
 import Categories from '../Categories/Categories.jsx';
 import Icon from '../Icon/Icon.jsx';
 import css from './CamperCard.module.css';
@@ -49,7 +49,9 @@ const CamperCard = ({ camper }) => {
         </div>
         <p className={css.cardDescription}>{camper.description}</p>
         <Categories camper={camper} />
-        <Button>Show more</Button>
+        <Link className={css.link} to={`/catalog/${camper.id}`}>
+          Show more
+        </Link>
       </div>
 
       {/* <Link
