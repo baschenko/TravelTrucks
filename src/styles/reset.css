@@ -22,8 +22,8 @@ a {
 }
 img {
   display: block;
-  max-width: 100%;
-  height: auto;
+  /* max-width: 100%;
+  height: auto; */
 }
 button {
   cursor: pointer;
@@ -36,4 +36,8 @@ input:focus,
 input:focus-visible,
 input:active {
   outline: none;
+}
+
+p {
+  margin: 0;
 }
