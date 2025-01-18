@@ -10,6 +10,10 @@
   color: var(--main);
   margin-right: 8px;
   margin-bottom: 8px;
+
+  &:hover {
+    background: var(--gray-light);
+  }
 }
 
 .icon {

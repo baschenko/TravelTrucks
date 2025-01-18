@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getCamperInfo } from '../../redux/campers/operations.js';
 import { selectCamper } from '../../redux/campers/selectors.js';
 import Categories from '../Categories/Categories.jsx';
+import css from './CampersFeatures.module.css';
 
 const CampersFeatures = () => {
   const { camperId } = useParams();
@@ -19,16 +20,28 @@ const CampersFeatures = () => {
 
   return (
     camper && (
-      <div>
+      <div className={css.wrapper}>
         <Categories camper={camper} />
-        <h3>Vehicle details</h3>
-        <ul>
-          <li>Form {camper.form}</li>
-          <li>Length {camper.length}</li>
-          <li>Width {camper.width}</li>
-          <li>Height {camper.height}</li>
-          <li>Tank {camper.tank}</li>
-          <li>Consumption {camper.consumption}</li>
+        <h3 className={css.subTitle}>Vehicle details</h3>
+        <ul className={css.listDetails}>
+          <li>
+            <span> Form</span> {camper.form}
+          </li>
+          <li>
+            <span> Length</span> {camper.length}
+          </li>
+          <li>
+            <span> Width</span> {camper.width}
+          </li>
+          <li>
+            <span> Height</span> {camper.height}
+          </li>
+          <li>
+            <span> Tank</span> {camper.tank}
+          </li>
+          <li>
+            <span> Consumption</span> {camper.consumption}
+          </li>
         </ul>
       </div>
     )
