@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import RatingAndLocation from '../../components/RatingAndLocation/RatingAndLocation.jsx';
 import Price from '../../components/Price/Price.jsx';
 import { Suspense, useEffect } from 'react';
 import { InfinitySpin } from 'react-loader-spinner';
 import { getCamperInfo } from '../../redux/campers/operations.js';
 import { selectCamper } from '../../redux/campers/selectors.js';
+import css from './CampersDetailsPage.module.css';
 
 const CampersDetailsPage = () => {
   const { camperId } = useParams();
@@ -20,28 +21,45 @@ const CampersDetailsPage = () => {
 
   return (
     camper && (
-      <div>
-        <h2>{camper.name}</h2>
+      <div className={css.container}>
+        <h2 className={css.title}>{camper.name}</h2>
         <RatingAndLocation
           rating={camper.rating}
           numberReviews={camper.reviews.length}
           location={camper.location}
+          className={css.rating}
         />
         <Price price={camper.price} />
-        <ul>
+        <ul className={css.listImg}>
           {camper.gallery.map(picture => (
-            <li key={picture.thumb}>
-              <img src={picture.thumb} />
+            <li key={picture.thumb} className={css.itemImg}>
+              <img
+                src={picture.thumb}
+                // width="292"
+                // height="312"
+                className={css.img}
+              />
             </li>
           ))}
         </ul>
-        <p>{camper.description}</p>
-        <ul>
-          <li>
-            <Link to="features">Features</Link>
+        <p className={css.text}>{camper.description}</p>
+        <ul className={css.listInfo}>
+          <li className={css.itemInfo}>
+            <NavLink
+              default
+              to="features"
+              className={({ isActive }) => isActive && css.active}
+            >
+              Features
+            </NavLink>
           </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
+          <li className={css.itemInfo}>
+            <NavLink
+              to="reviews"
+              className={({ isActive }) => isActive && css.active}
+            >
+              Reviews
+            </NavLink>
           </li>
         </ul>
         <Suspense
