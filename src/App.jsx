@@ -17,6 +17,7 @@ import CampersReviews from './components/CampersReviews/CampersReviews.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import { useDispatch } from 'react-redux';
 import { fetchCampers } from './redux/campers/operations.js';
+import { Toaster } from 'react-hot-toast';
 
 // import RestrictedRuote from './RestrictedRuote';
 // import PrivateRoute from './PrivateRoute';
@@ -43,19 +44,32 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <Layout>
-      <Suspense fallback={null}>
-        <Routes>
-          <Route index element={<HomePage />} />
+    <>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: 'var(--white)',
+            color: 'var(--text)',
+          },
+        }}
+      />
 
-          <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:camperId" element={<CampersDetailsPage />}>
-            <Route path="features" element={<CampersFeatures />} />
-            <Route path="reviews" element={<CampersReviews />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
-    </Layout>
+      <Layout>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route index element={<HomePage />} />
+
+            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/catalog/:camperId" element={<CampersDetailsPage />}>
+              <Route path="features" element={<CampersFeatures />} />
+              <Route path="reviews" element={<CampersReviews />} />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+      </Layout>
+    </>
   );
 }

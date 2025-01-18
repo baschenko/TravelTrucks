@@ -64,5 +64,12 @@
 .active {
   composes: itemInfo;
   border-bottom: 5px solid var(--button);
-  /* color: var(--button-hover); */
+}
+
+.wrapperFeatures {
+  width: 631px;
+}
+
+.wrapperBooking {
+  display: flex;
 }

@@ -7,6 +7,7 @@ import { InfinitySpin } from 'react-loader-spinner';
 import { getCamperInfo } from '../../redux/campers/operations.js';
 import { selectCamper } from '../../redux/campers/selectors.js';
 import css from './CampersDetailsPage.module.css';
+import BookingForm from '../../components/BookingForm/BookingForm.jsx';
 
 const CampersDetailsPage = () => {
   const { camperId } = useParams();
@@ -62,18 +63,23 @@ const CampersDetailsPage = () => {
             </NavLink>
           </li>
         </ul>
-        <Suspense
-          fallback={
-            <InfinitySpin
-              visible={true}
-              width="200"
-              color="#4fa94d"
-              ariaLabel="infinity-spin-loading"
-            />
-          }
-        >
-          <Outlet />
-        </Suspense>
+        <div className={css.wrapperBooking}>
+          <div className={css.wrapperFeatures}>
+            <Suspense
+              fallback={
+                <InfinitySpin
+                  visible={true}
+                  width="200"
+                  color="#4fa94d"
+                  ariaLabel="infinity-spin-loading"
+                />
+              }
+            >
+              <Outlet />
+            </Suspense>
+          </div>
+          <BookingForm />
+        </div>
       </div>
     )
   );

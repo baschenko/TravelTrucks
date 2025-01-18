@@ -1,8 +1,7 @@
 .wrapper {
   padding: 44px 52px;
   border-radius: 10px;
-  width: 631px;
-  /* height: 588px; */
+
   background: var(--inputs);
 }
 

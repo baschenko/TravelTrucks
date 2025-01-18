@@ -50,7 +50,7 @@ const CamperCard = ({ camper }) => {
 
         <p className={css.cardDescription}>{camper.description}</p>
         <Categories camper={camper} />
-        <Link className={css.link} to={`/catalog/${camper.id}`}>
+        <Link className={css.link} to={`/catalog/${camper.id}/features`}>
           Show more
         </Link>
       </div>
