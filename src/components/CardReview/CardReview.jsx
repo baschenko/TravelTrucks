@@ -5,7 +5,6 @@ const CardReview = ({ info }) => {
   const ratingStar = rating => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
-      console.log(i < rating);
       stars.push(
         <li key={i} className={css.itemStar}>
           <Icon

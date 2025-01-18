@@ -21,12 +21,24 @@ export const getCamperInfo = createAsyncThunk(
   'campers/getCamperInfo',
   async (camperId, thunkAPI) => {
     try {
-      console.log(camperId);
       const res = await axios.get(`/campers/${camperId}`);
-      console.log('campers/getCamperInfo', res.data);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+// GET @ /campers
+// export const fetchCampers = createAsyncThunk(
+//   'campers/fetchAll',
+//   async (_, thunkAPI) => {
+//     try {
+//       const res = await axios.get('/campers');
+//       return res.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );

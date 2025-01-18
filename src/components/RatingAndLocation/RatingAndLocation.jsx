@@ -2,7 +2,12 @@ import clsx from 'clsx';
 import Icon from '../Icon/Icon.jsx';
 import css from './RatingAndLocation.module.css';
 
-const RatingAndLocation = ({ rating, numberReviews, location, className }) => {
+const RatingAndLocation = ({
+  rating,
+  numberReviews,
+  location,
+  className = '',
+}) => {
   return (
     <div className={clsx(css.wrapperReviews, className)}>
       <Icon id="icon-star" width={16} height={16} className={css.star} />

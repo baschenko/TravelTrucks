@@ -49,7 +49,7 @@ const CampersDetailsPage = () => {
             <NavLink
               default
               to="features"
-              className={({ isActive }) => isActive && css.active}
+              className={({ isActive }) => (isActive ? css.active : undefined)}
             >
               Features
             </NavLink>
@@ -57,7 +57,7 @@ const CampersDetailsPage = () => {
           <li className={css.itemInfo}>
             <NavLink
               to="reviews"
-              className={({ isActive }) => isActive && css.active}
+              className={({ isActive }) => (isActive ? css.active : undefined)}
             >
               Reviews
             </NavLink>

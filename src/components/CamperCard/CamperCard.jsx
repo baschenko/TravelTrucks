@@ -46,6 +46,7 @@ const CamperCard = ({ camper }) => {
           rating={camper.rating}
           numberReviews={camper.reviews.length}
           location={camper.location}
+          className=""
         />
 
         <p className={css.cardDescription}>{camper.description}</p>

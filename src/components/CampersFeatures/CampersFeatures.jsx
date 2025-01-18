@@ -9,7 +9,6 @@ import css from './CampersFeatures.module.css';
 const CampersFeatures = () => {
   const { camperId } = useParams();
 
-  console.log('camperIddddd:', camperId);
   const dispatch = useDispatch();
 
   useEffect(() => {

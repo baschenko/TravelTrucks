@@ -1,10 +1,9 @@
-// import { useLocation } from 'react-router-dom';
 import CamperCard from '../CamperCard/CamperCard.jsx';
+import css from './CampersList.module.css';
 
 const CampersList = ({ campers }) => {
-  //   const location = useLocation();
   return campers.map(camper => (
-    <li key={camper.id} className="">
+    <li key={camper.id} className={css.itemCard}>
       <CamperCard camper={camper} />
     </li>
   ));
