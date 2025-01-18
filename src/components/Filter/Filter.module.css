@@ -36,10 +36,6 @@
   color: var(--main);
 }
 
-.text {
-  /* margin-bottom: 32px; */
-}
-
 .subTitle {
   font-family: var(--font-family);
   font-weight: 600;

@@ -49,7 +49,7 @@ export default function App() {
           <Route index element={<HomePage />} />
 
           <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:id" element={<CampersDetailsPage />}>
+          <Route path="/catalog/:camperId" element={<CampersDetailsPage />}>
             <Route path="features" element={<CampersFeatures />} />
             <Route path="reviews" element={<CampersReviews />} />
           </Route>

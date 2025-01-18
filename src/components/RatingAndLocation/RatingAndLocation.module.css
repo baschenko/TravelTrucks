@@ -1,0 +1,20 @@
+.wrapperReviews {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+
+  color: var(--main);
+}
+
+.star {
+  fill: var(--rating);
+  margin-right: 4px;
+}
+
+.cardReviews {
+  margin-right: 16px;
+}
+
+.map {
+  margin-right: 4px;
+}

@@ -49,11 +49,6 @@
   display: flex;
 }
 
-.cardPrice {
-  font-size: 24px;
-  margin-right: 12px;
-}
-
 .cardHeart {
   background: none;
   color: #101828;
@@ -66,26 +61,6 @@
 
 .icon {
   fill: currentColor;
-}
-.wrapperReviews {
-  display: flex;
-  align-items: center;
-  margin-bottom: 24px;
-
-  color: var(--main);
-}
-
-.star {
-  fill: var(--rating);
-  margin-right: 4px;
-}
-
-.cardReviews {
-  margin-right: 16px;
-}
-
-.map {
-  margin-right: 4px;
 }
 
 .cardDescription {

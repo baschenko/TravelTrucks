@@ -3,6 +3,8 @@ import imagesDefault from '../../images/default.png';
 import Categories from '../Categories/Categories.jsx';
 import Icon from '../Icon/Icon.jsx';
 import css from './CamperCard.module.css';
+import RatingAndLocation from '../RatingAndLocation/RatingAndLocation.jsx';
+import Price from '../Price/Price.jsx';
 
 const CamperCard = ({ camper }) => {
   return (
@@ -24,7 +26,7 @@ const CamperCard = ({ camper }) => {
         <div className={css.cardHeader}>
           <h2 className={css.cardTitle}>{camper.name}</h2>
           <div className={css.wrapperPrice}>
-            <p className={css.cardPrice}>€{camper.price}.00</p>
+            <Price price={camper.price} />
             <button
               aria-label="Heart button"
               className={css.cardHeart}
@@ -39,14 +41,13 @@ const CamperCard = ({ camper }) => {
             </button>
           </div>
         </div>
-        <div className={css.wrapperReviews}>
-          <Icon id="icon-star" width={16} height={16} className={css.star} />
-          <p className={css.cardReviews}>
-            {camper.rating}({camper.reviews.length} Reviews)
-          </p>
-          <Icon id="icon-map" width={16} height={16} className={css.map} />
-          <p>{camper.location}</p>
-        </div>
+
+        <RatingAndLocation
+          rating={camper.rating}
+          numberReviews={camper.reviews.length}
+          location={camper.location}
+        />
+
         <p className={css.cardDescription}>{camper.description}</p>
         <Categories camper={camper} />
         <Link className={css.link} to={`/catalog/${camper.id}`}>
