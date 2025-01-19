@@ -39,6 +39,7 @@ const CampersDetailsPage = () => {
       <div className={css.container}>
         <h2 className={css.title}>{camper.name}</h2>
         <RatingAndLocation
+          id={camperId}
           rating={camper.rating}
           numberReviews={camper.reviews.length}
           location={camper.location}

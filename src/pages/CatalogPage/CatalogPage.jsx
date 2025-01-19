@@ -12,7 +12,8 @@ import css from './CatalogPage.module.css';
 import { useEffect, useState } from 'react';
 import Button from '../../components/Button/Button.jsx';
 import { fetchCampers } from '../../redux/campers/operations.js';
-import { setPage } from '../../redux/campers/slice.js';
+import { clearItems, setPage } from '../../redux/campers/slice.js';
+import { changeFilter } from '../../redux/filter/filtersSlice.js';
 
 const CatalogPage = () => {
   const campers = useSelector(selectAllCampers);
@@ -28,6 +29,8 @@ const CatalogPage = () => {
   useEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
+      dispatch(clearItems([]));
+      dispatch(changeFilter(''));
       return;
     }
     dispatch(fetchCampers({ page, perPage, filter }));

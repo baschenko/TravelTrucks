@@ -43,6 +43,7 @@ const CamperCard = ({ camper }) => {
         </div>
 
         <RatingAndLocation
+          id={camper.id}
           rating={camper.rating}
           numberReviews={camper.reviews.length}
           location={camper.location}

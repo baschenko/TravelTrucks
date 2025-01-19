@@ -13,6 +13,11 @@
 
 .cardReviews {
   margin-right: 16px;
+  color: var(--main);
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .map {
