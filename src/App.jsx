@@ -5,6 +5,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
 import CampersFeatures from './components/CampersFeatures/CampersFeatures.jsx';
 import CampersReviews from './components/CampersReviews/CampersReviews.jsx';
 import { Toaster } from 'react-hot-toast';
+import FavoritePage from './pages/FavoritePage/FavoritePage.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const CatalogPage = lazy(() => import('./pages/CatalogPage/CatalogPage.jsx'));
@@ -36,6 +37,7 @@ export default function App() {
               <Route path="features" element={<CampersFeatures />} />
               <Route path="reviews" element={<CampersReviews />} />
             </Route>
+            <Route path="/favorite" element={<FavoritePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
