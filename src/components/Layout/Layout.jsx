@@ -1,11 +1,18 @@
+import { useSelector } from 'react-redux';
 import AppBar from '../AppBar/AppBar.jsx';
 import css from './Layout.module.css';
+import { selectLoading } from '../../redux/campers/selectors.js';
+import Loader from '../Loader/Loader.jsx';
 
 export default function Layout({ children }) {
+  const isLoading = useSelector(selectLoading);
   return (
-    <div className={css.container}>
-      <AppBar />
-      {children}
-    </div>
+    <>
+      {isLoading && <Loader />}
+      <div className={css.container}>
+        <AppBar />
+        {children}
+      </div>
+    </>
   );
 }

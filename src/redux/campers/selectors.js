@@ -1,4 +1,4 @@
-export const selectLoading = state => state.campers.loading;
+export const selectLoading = state => state.campers.isLoading;
 
 export const selectFilter = state => state.filters.name;
 
