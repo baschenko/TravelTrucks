@@ -1,8 +1,15 @@
-# React + Vite
+"TravelTrucks"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+"TravelTrucks" - is a web application that deals with renting campers.
 
-Currently, two official plugins are available:
+Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+"TravelTrucks" is a platform designed to find campers for users. The user can
+choose a car according to his needs and location. Each camper has a detailed
+description and reviews from previous users.
+
+Fill out the form - Complete the application form available on the TravelTrucks
+website to book a campervan.
+
+Author: Vitaly Bashchenko LinkedIn:
+https://www.linkedin.com/in/vitaly-baschenko/ Telegram: @vitaly_bash
