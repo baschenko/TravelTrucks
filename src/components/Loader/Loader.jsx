@@ -7,7 +7,6 @@ export default function Loader() {
         visible={true}
         height="96"
         width="96"
-        // color="var(--secondary-color---5)"
         strokeColor="var(--main)"
         strokeWidth="5"
         animationDuration="0.75"

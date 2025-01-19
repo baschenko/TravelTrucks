@@ -51,8 +51,6 @@ const CampersDetailsPage = () => {
             <li key={picture.thumb} className={css.itemImg}>
               <img
                 src={picture.thumb}
-                // width="292"
-                // height="312"
                 className={css.img}
                 onClick={() => {
                   openModal(picture.original);

@@ -19,7 +19,7 @@ const Filter = () => {
     let arr = [];
     values.location && arr.push(`location=${values.location}`);
     values.type && arr.push(`form=${values.type}`);
-    const querySrting = values.equipment.map(value => {
+    const queryString = values.equipment.map(value => {
       if (value === 'automatic') {
         return `transmission=${value}`;
       } else if (value === 'petrol') {
@@ -28,7 +28,7 @@ const Filter = () => {
         return `${value}=true`;
       }
     });
-    arr = [...arr, ...querySrting].join('&');
+    arr = [...arr, ...queryString].join('&');
     dispatch(changeFilter(arr));
     dispatch(clearItems([]));
   };

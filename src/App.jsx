@@ -1,19 +1,16 @@
-import {
-  // lazy,
-  Suspense,
-} from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout.jsx';
-import CatalogPage from './pages/CatalogPage/CatalogPage.jsx';
-import CampersDetailsPage from './pages/CampersDetailsPage/CampersDetailsPage.jsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
 import CampersFeatures from './components/CampersFeatures/CampersFeatures.jsx';
 import CampersReviews from './components/CampersReviews/CampersReviews.jsx';
-import HomePage from './pages/HomePage/HomePage.jsx';
 import { Toaster } from 'react-hot-toast';
 
-// const HomePage = lazy(() => import('../pages/HomePage/HomePage.jsx'));
-// const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
+const CatalogPage = lazy(() => import('./pages/CatalogPage/CatalogPage.jsx'));
+const CampersDetailsPage = lazy(() =>
+  import('./pages/CampersDetailsPage/CampersDetailsPage.jsx')
+);
 
 export default function App() {
   return (

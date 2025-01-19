@@ -1,4 +1,3 @@
-// import './Icon.css';
 import icons from '../../images/symbol-defs.svg';
 
 const Icon = ({ id, width, height, className = '' }) => {

@@ -2,6 +2,8 @@
   background-image: url(../../images/Hero_image.jpg);
   background-repeat: no-repeat;
   width: 1440px;
+  background-position-y: 76px;
+  padding-top: 76px;
 }
 
 .container {
