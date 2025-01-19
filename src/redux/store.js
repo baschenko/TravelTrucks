@@ -13,21 +13,21 @@ import storage from 'redux-persist/lib/storage';
 
 import campersReducer from './campers/slice';
 import { filterReducer } from './filter/filtersSlice.js';
-// import authReducer from "./auth/slice";
 
 const persistAuthConfig = {
   key: 'campers',
   storage,
-  whitelist: ['campers'],
+  whitelist: ['favoriteItem'],
 };
 
-//sergqaz@mail.com
-
-const persistedAuthReducer = persistReducer(persistAuthConfig, campersReducer);
+const persistedCampersReducer = persistReducer(
+  persistAuthConfig,
+  campersReducer
+);
 
 export const store = configureStore({
   reducer: {
-    campers: persistedAuthReducer,
+    campers: persistedCampersReducer,
     filters: filterReducer,
   },
   middleware: getDefaultMiddleware =>

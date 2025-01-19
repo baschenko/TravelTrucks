@@ -10,7 +10,6 @@ const RatingAndLocation = ({
   location,
   className = '',
 }) => {
-  console.log('RatingAndLocation id: ', id);
   return (
     <div className={clsx(css.wrapperReviews, className)}>
       <Icon id="icon-star" width={16} height={16} className={css.star} />

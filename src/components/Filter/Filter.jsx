@@ -29,7 +29,6 @@ const Filter = () => {
       }
     });
     arr = [...arr, ...querySrting].join('&');
-    console.log('arr: ', arr);
     dispatch(changeFilter(arr));
     dispatch(clearItems([]));
   };

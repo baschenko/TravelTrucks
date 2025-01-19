@@ -5,8 +5,28 @@ import Icon from '../Icon/Icon.jsx';
 import css from './CamperCard.module.css';
 import RatingAndLocation from '../RatingAndLocation/RatingAndLocation.jsx';
 import Price from '../Price/Price.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addToFavorite,
+  deleteFromFavorite,
+} from '../../redux/campers/slice.js';
+import { selectFavoriteItems } from '../../redux/campers/selectors.js';
+import clsx from 'clsx';
 
 const CamperCard = ({ camper }) => {
+  const dispatch = useDispatch();
+  const favoriteItems = useSelector(selectFavoriteItems);
+
+  const isFavorite = favoriteItems.find(favorite => favorite.id === camper.id);
+
+  const handleClick = () => {
+    if (isFavorite) {
+      dispatch(deleteFromFavorite(camper.id));
+      return;
+    }
+    dispatch(addToFavorite(camper));
+  };
+
   return (
     <div className={css.wrapperCard}>
       <div className={css.wrapperImg}>
@@ -18,7 +38,6 @@ const CamperCard = ({ camper }) => {
               : imagesDefault
           }
           alt={camper.name}
-          // width="292"
           height="320"
         />
       </div>
@@ -29,8 +48,8 @@ const CamperCard = ({ camper }) => {
             <Price price={camper.price} />
             <button
               aria-label="Heart button"
-              className={css.cardHeart}
-              // onClick={}
+              className={clsx(css.cardHeart, isFavorite && css.favorite)}
+              onClick={handleClick}
             >
               <Icon
                 id="icon-heart"

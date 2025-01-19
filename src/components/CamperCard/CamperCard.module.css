@@ -53,9 +53,13 @@
   background: none;
   color: #101828;
   padding: 0;
+
+  &:hover {
+    color: #e44848;
+  }
 }
 
-.cardHeart:hover {
+.favorite {
   color: #e44848;
 }
 

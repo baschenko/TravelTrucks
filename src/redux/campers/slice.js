@@ -5,6 +5,7 @@ const campersSlice = createSlice({
   name: 'campers',
   initialState: {
     items: [],
+    favoriteItem: [],
     total: 0,
     page: 1,
     perPage: 4,
@@ -22,6 +23,16 @@ const campersSlice = createSlice({
     setPage(state) {
       state.page = state.page + 1;
     },
+
+    addToFavorite(state, { payload }) {
+      state.favoriteItem = [...state.favoriteItem, payload];
+    },
+
+    deleteFromFavorite(state, { payload }) {
+      state.favoriteItem = state.favoriteItem.filter(
+        favorite => favorite.id !== payload
+      );
+    },
   },
   extraReducers: builder => {
     builder
@@ -33,10 +44,10 @@ const campersSlice = createSlice({
         state.total = payload.total;
       })
 
-      .addCase(getCamperInfo.fulfilled, (state, action) => {
+      .addCase(getCamperInfo.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.camper = action.payload;
+        state.camper = payload;
       })
 
       .addMatcher(
@@ -48,13 +59,14 @@ const campersSlice = createSlice({
 
       .addMatcher(
         isAnyOf(fetchCampers.rejected, getCamperInfo.rejected),
-        (state, action) => {
+        (state, { payload }) => {
           state.isLoading = false;
-          state.error = action.payload;
+          state.error = payload;
         }
       );
   },
 });
 
-export const { clearItems, setPage } = campersSlice.actions;
+export const { clearItems, setPage, addToFavorite, deleteFromFavorite } =
+  campersSlice.actions;
 export default campersSlice.reducer;
