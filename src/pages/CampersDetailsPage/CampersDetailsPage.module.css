@@ -25,6 +25,7 @@
   height: 312px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .img {
