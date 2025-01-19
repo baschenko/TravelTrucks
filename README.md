@@ -13,5 +13,5 @@ description and reviews from previous users.</p>
 <p>The application has the ability to mark favorite camping models. Which can be viewed on a separate page. If the consumer changes his mind and wants to remove the model from the list, this can be done by clicking on the heart. The list of favorite models is in the local storage, so when you reload the page, the list of favorites will remain.</p>
 
 <p><b>Author:</b> Vitaly Bashchenko</p> 
-<p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/vitaly-baschenko/" target="_blank">link</a></p>
+<p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/vitaly-baschenko/" target="_blank">link to LinkedIn</a></p>
 <p><b>Telegram:</b> @vitaly_bash</p>
