@@ -1,12 +1,8 @@
 import {
   // lazy,
   Suspense,
-  // useEffect
 } from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { refreshUser } from '../redux/auth/operations';
-// import { selectIsRefreshing } from '../redux/auth/selectors';
 import Layout from './components/Layout/Layout.jsx';
 import CatalogPage from './pages/CatalogPage/CatalogPage.jsx';
 import CampersDetailsPage from './pages/CampersDetailsPage/CampersDetailsPage.jsx';
