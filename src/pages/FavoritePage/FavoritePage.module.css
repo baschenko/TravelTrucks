@@ -12,18 +12,3 @@
 .listCards {
   margin-bottom: 40px;
 }
-
-.btn {
-  border: 1px solid var(--gray-light);
-
-  width: 145px;
-
-  color: var(--main);
-
-  background: none;
-
-  &:hover {
-    background: none;
-    border-color: var(--button-hover);
-  }
-}
