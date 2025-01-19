@@ -1,7 +1,6 @@
 import {
   // lazy,
   Suspense,
-  useEffect,
   // useEffect
 } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -15,34 +14,12 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
 import CampersFeatures from './components/CampersFeatures/CampersFeatures.jsx';
 import CampersReviews from './components/CampersReviews/CampersReviews.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
-import { useDispatch } from 'react-redux';
-import { fetchCampers } from './redux/campers/operations.js';
 import { Toaster } from 'react-hot-toast';
 
-// import RestrictedRuote from './RestrictedRuote';
-// import PrivateRoute from './PrivateRoute';
-
 // const HomePage = lazy(() => import('../pages/HomePage/HomePage.jsx'));
-// const RegistrationPage = lazy(() =>
-// import('../pages/RegistrationPage/RegistrationPage')
-// );
-// const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 // const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
 
 export default function App() {
-  // const dispatch = useDispatch();
-  // const isRefreshing = useSelector(selectIsRefreshing);
-
-  // useEffect(() => {
-  //   // dispatch(refreshUser());
-  // }, [dispatch]);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCampers());
-  }, [dispatch]);
-
   return (
     <>
       <Toaster
