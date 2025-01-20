@@ -11,25 +11,71 @@ const Filter = () => {
 
   const initialValues = {
     location: '',
-    equipment: [],
+    equipment: {
+      AC: false,
+      kitchen: false,
+      TV: false,
+      bathroom: false,
+      refrigerator: false,
+      microwave: false,
+      gas: false,
+      water: false,
+      transmission: '',
+      engine: '',
+    },
     type: '',
   };
 
+  const optionsTransmission = [
+    { value: 'automatic', label: 'Automatic' },
+    { value: 'manual', label: 'Manual' },
+    { value: '', label: 'Automatic' },
+  ];
+
+  const optionsEngine = [
+    { value: 'petrol', label: 'Petrol' },
+    { value: 'diesel', label: 'Diesel' },
+    { value: 'hybrid', label: 'Hybrid' },
+    { value: '', label: 'Petrol' },
+  ];
+
+  const CustomSelectButtonTransmission = ({ field, form, options }) => {
+    const currentOptionIndex = options.findIndex(
+      option => option.value === field.value
+    );
+
+    const handleClickTransmission = () => {
+      const nextIndex = (currentOptionIndex + 1) % options.length;
+      form.setFieldValue(field.name, options[nextIndex].value);
+    };
+
+    const currentLabel = options[currentOptionIndex]?.label || 'Choise';
+    return (
+      <button
+        type="button"
+        onClick={handleClickTransmission}
+        className={css.btnFilter}
+      >
+        {currentLabel}
+      </button>
+    );
+  };
+
   const handleSubmit = values => {
-    let arr = [];
+    const arr = [];
     values.location && arr.push(`location=${values.location}`);
     values.type && arr.push(`form=${values.type}`);
-    const queryString = values.equipment.map(value => {
-      if (value === 'automatic') {
-        return `transmission=${value}`;
-      } else if (value === 'petrol') {
-        return `engine=${value}`;
-      } else {
-        return `${value}=true`;
-      }
-    });
-    arr = [...arr, ...queryString].join('&');
-    dispatch(changeFilter(arr));
+
+    const query = Object.fromEntries(
+      Object.entries(values.equipment).filter(
+        ([, values]) => (values !== false) & (values !== '')
+      )
+    );
+
+    const queryString =
+      new URLSearchParams(query).toString() + '&' + arr.join('&');
+
+    dispatch(changeFilter(queryString));
     dispatch(clearItems([]));
   };
 
@@ -60,95 +106,79 @@ const Filter = () => {
             aria-labelledby="checkbox-group"
             className={css.filtersBlock}
           >
-            <label
-              className={
-                values.equipment.includes('AC') ? css.active : undefined
-              }
-            >
-              <Field type="checkbox" name="equipment" value="AC" />
+            <label className={values.equipment.AC ? css.active : undefined}>
+              <Field type="checkbox" name="equipment.AC" />
               <Icon id="icon-ac" width={32} height={32} />
               AC
             </label>
             <label
-              className={
-                values.equipment.includes('automatic') ? css.active : undefined
-              }
+              className={values.equipment.transmission ? css.active : undefined}
             >
-              <Field type="checkbox" name="equipment" value="automatic" />
               <Icon id="icon-transmission" width={32} height={32} />
-              <p>Automatic</p>
+              <Field name="equipment.transmission">
+                {({ field, form }) => (
+                  <CustomSelectButtonTransmission
+                    field={field}
+                    form={form}
+                    options={optionsTransmission}
+                  />
+                )}
+              </Field>
             </label>
             <label
-              className={
-                values.equipment.includes('kitchen') ? css.active : undefined
-              }
+              className={values.equipment.kitchen ? css.active : undefined}
             >
-              <Field type="checkbox" name="equipment" value="kitchen" />
+              <Field type="checkbox" name="equipment.kitchen" />
               <Icon id="icon-kitchen" width={32} height={32} />
               Kitchen
             </label>
-            <label
-              className={
-                values.equipment.includes('TV') ? css.active : undefined
-              }
-            >
-              <Field type="checkbox" name="equipment" value="TV" />
+            <label className={values.equipment.TV ? css.active : undefined}>
+              <Field type="checkbox" name="equipment.TV" />
               <Icon id="icon-tv" width={32} height={32} />
               TV
             </label>
             <label
-              className={
-                values.equipment.includes('bathroom') ? css.active : undefined
-              }
+              className={values.equipment.bathroom ? css.active : undefined}
             >
-              <Field type="checkbox" name="equipment" value="bathroom" />
+              <Field type="checkbox" name="equipment.bathroom" />
               <Icon id="icon-bathroom" width={32} height={32} />
               Bathroom
             </label>
-            <label
-              className={
-                values.equipment.includes('petrol') ? css.active : undefined
-              }
-            >
-              <Field type="checkbox" name="equipment" value="petrol" />
+
+            <label className={values.equipment.engine ? css.active : undefined}>
               <Icon id="icon-engine" width={32} height={32} />
-              Petrol
+              <Field name="equipment.engine">
+                {({ field, form }) => (
+                  <CustomSelectButtonTransmission
+                    field={field}
+                    form={form}
+                    options={optionsEngine}
+                  />
+                )}
+              </Field>
             </label>
+
             <label
-              className={
-                values.equipment.includes('refrigerator')
-                  ? css.active
-                  : undefined
-              }
+              className={values.equipment.refrigerator ? css.active : undefined}
             >
-              <Field type="checkbox" name="equipment" value="refrigerator" />
+              <Field type="checkbox" name="equipment.refrigerator" />
               <Icon id="icon-refrigerator" width={32} height={32} />
               Refrigerator
             </label>
             <label
-              className={
-                values.equipment.includes('microwave') ? css.active : undefined
-              }
+              className={values.equipment.microwave ? css.active : undefined}
             >
-              <Field type="checkbox" name="equipment" value="microwave" />
+              <Field type="checkbox" name="equipment.microwave" />
               <Icon id="icon-microwave" width={32} height={32} />
               Microwave
             </label>
-            <label
-              className={
-                values.equipment.includes('gas') ? css.active : undefined
-              }
-            >
-              <Field type="checkbox" name="equipment" value="gas" />
+            <label className={values.equipment.gas ? css.active : undefined}>
+              <Field type="checkbox" name="equipment.gas" />
               <Icon id="icon-gas" width={32} height={32} />
               Gas
             </label>
-            <label
-              className={
-                values.equipment.includes('water') ? css.active : undefined
-              }
-            >
-              <Field type="checkbox" name="equipment" value="water" />
+            <label className={values.equipment.water ? css.active : undefined}>
+              <Field type="checkbox" name="equipment.water" />
               <Icon id="icon-water" width={32} height={32} />
               Water
             </label>
