@@ -18,7 +18,7 @@ const BookingForm = () => {
       .required('Email is required'),
 
     date: Yup.date()
-      .min('2025-01-18', 'Date is too early')
+      .min(new Date(), 'Date is too early')
       .required('Data is required'),
 
     comment: Yup.string(),
@@ -80,9 +80,11 @@ const BookingForm = () => {
             <Field
               id="date"
               name="date"
-              type="date"
+              type="text"
               placeholder="Booking date*"
               className={css.input}
+              onfocus="(this.type='date')"
+              onblur="(this.type='text')"
             />
             <ErrorMessage
               name="date"
