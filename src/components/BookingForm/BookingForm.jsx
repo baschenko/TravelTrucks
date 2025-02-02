@@ -48,7 +48,7 @@ const BookingForm = () => {
         onSubmit={handleSubmit}
       >
         <Form className={css.form}>
-          <div className={css.fieldGroup}>
+          <label className={css.fieldGroup}>
             <Field
               id="name"
               name="name"
@@ -61,8 +61,8 @@ const BookingForm = () => {
               component="div"
               className={css.errorMessage}
             />
-          </div>
-          <div className={css.fieldGroup}>
+          </label>
+          <label className={css.fieldGroup}>
             <Field
               id="email"
               name="email"
@@ -75,24 +75,28 @@ const BookingForm = () => {
               component="div"
               className={css.errorMessage}
             />
-          </div>
-          <div className={css.fieldGroup}>
+          </label>
+          <label className={css.fieldGroup}>
             <Field
               id="date"
               name="date"
               type="text"
               placeholder="Booking date*"
               className={css.input}
-              onfocus="(this.type='date')"
-              onblur="(this.type='text')"
+              onBlur={e => {
+                e.currentTarget.type = 'text';
+              }}
+              onFocus={e => {
+                e.currentTarget.type = 'date';
+              }}
             />
             <ErrorMessage
               name="date"
               component="div"
               className={css.errorMessage}
             />
-          </div>
-          <div className={css.fieldGroup}>
+          </label>
+          <label className={css.fieldGroup}>
             <Field
               as="textarea"
               id="comment"
@@ -106,7 +110,7 @@ const BookingForm = () => {
               component="div"
               className={css.errorMessage}
             />
-          </div>
+          </label>
           <Button type="submit" className={css.btn}>
             Send
           </Button>
