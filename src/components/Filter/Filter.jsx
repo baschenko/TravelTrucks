@@ -81,7 +81,7 @@ const Filter = () => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      {({ values }) => (
+      {({ values, setFieldValue }) => (
         <Form className={css.wrapper}>
           <label className={css.label}>
             Location
@@ -194,7 +194,18 @@ const Filter = () => {
             <label
               className={values.type === 'panelTruck' ? css.active : undefined}
             >
-              <Field type="radio" name="type" value="panelTruck" />
+              <Field
+                type="radio"
+                name="type"
+                value="panelTruck"
+                onClick={() => {
+                  if (values.type === 'panelTruck') {
+                    setFieldValue('type', '');
+                  } else {
+                    setFieldValue('type', 'panelTruck');
+                  }
+                }}
+              />
               <Icon id="icon-van" width={32} height={32} />
               Van
             </label>
@@ -203,14 +214,36 @@ const Filter = () => {
                 values.type === 'fullyIntegrated' ? css.active : undefined
               }
             >
-              <Field type="radio" name="type" value="fullyIntegrated" />
+              <Field
+                type="radio"
+                name="type"
+                value="fullyIntegrated"
+                onClick={() => {
+                  if (values.type === 'fullyIntegrated') {
+                    setFieldValue('type', '');
+                  } else {
+                    setFieldValue('type', 'fullyIntegrated');
+                  }
+                }}
+              />
               <Icon id="icon-fully" width={32} height={32} />
               Fully Integrated
             </label>
             <label
               className={values.type === 'alcove' ? css.active : undefined}
             >
-              <Field type="radio" name="type" value="alcove" />
+              <Field
+                type="radio"
+                name="type"
+                value="alcove"
+                onClick={() => {
+                  if (values.type === 'alcove') {
+                    setFieldValue('type', '');
+                  } else {
+                    setFieldValue('type', 'alcove');
+                  }
+                }}
+              />
               <Icon id="icon-alcove" width={32} height={32} />
               Alcove
             </label>
