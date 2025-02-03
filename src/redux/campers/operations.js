@@ -10,7 +10,7 @@ export const fetchCampers = createAsyncThunk(
   async ({ page, perPage, filter }, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/campers?page=${page}&limit=${perPage}&${filter}`
+        `/campers?page=${page}&limit=${perPage}${filter && `&${filter}`}`
       );
       return res.data;
     } catch (error) {

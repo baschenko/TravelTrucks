@@ -1,6 +1,6 @@
 export const selectLoading = state => state.campers.isLoading;
 
-export const selectFilter = state => state.filters.name;
+export const selectFilter = state => state.filters.value;
 
 export const selectAllCampers = state => state.campers.items;
 

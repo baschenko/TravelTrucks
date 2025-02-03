@@ -13,7 +13,6 @@ import { useEffect, useState } from 'react';
 import Button from '../../components/Button/Button.jsx';
 import { fetchCampers } from '../../redux/campers/operations.js';
 import { clearItems, setPage } from '../../redux/campers/slice.js';
-import { changeFilter } from '../../redux/filter/filtersSlice.js';
 
 const CatalogPage = () => {
   const campers = useSelector(selectAllCampers);
@@ -29,11 +28,20 @@ const CatalogPage = () => {
   useEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
-      dispatch(clearItems([]));
-      dispatch(changeFilter(''));
+
       return;
     }
-    dispatch(fetchCampers({ page, perPage, filter }));
+    if (filter) {
+      dispatch(clearItems([]));
+    }
+    const query = Object.fromEntries(
+      Object.entries(filter).filter(
+        ([, values]) => (values !== false) & (values !== '')
+      )
+    );
+    const queryString = new URLSearchParams(query).toString();
+
+    dispatch(fetchCampers({ page, perPage, filter: queryString }));
   }, [dispatch, isFirstRender, page, perPage, filter]);
 
   const handleClick = () => {

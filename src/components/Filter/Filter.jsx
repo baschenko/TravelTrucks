@@ -4,26 +4,25 @@ import Icon from '../Icon/Icon.jsx';
 import Button from '../Button/Button.jsx';
 import { useDispatch } from 'react-redux';
 import { changeFilter } from '../../redux/filter/filtersSlice.js';
-import { clearItems } from '../../redux/campers/slice.js';
 
 const Filter = () => {
   const dispatch = useDispatch();
 
   const initialValues = {
     location: '',
-    equipment: {
-      AC: false,
-      kitchen: false,
-      TV: false,
-      bathroom: false,
-      refrigerator: false,
-      microwave: false,
-      gas: false,
-      water: false,
-      transmission: '',
-      engine: '',
-    },
-    type: '',
+
+    AC: false,
+    kitchen: false,
+    TV: false,
+    bathroom: false,
+    refrigerator: false,
+    microwave: false,
+    gas: false,
+    water: false,
+    transmission: '',
+    engine: '',
+
+    form: '',
   };
 
   const optionsTransmission = [
@@ -62,21 +61,7 @@ const Filter = () => {
   };
 
   const handleSubmit = values => {
-    const arr = [];
-    values.location && arr.push(`location=${values.location}`);
-    values.type && arr.push(`form=${values.type}`);
-
-    const query = Object.fromEntries(
-      Object.entries(values.equipment).filter(
-        ([, values]) => (values !== false) & (values !== '')
-      )
-    );
-
-    const queryString =
-      new URLSearchParams(query).toString() + '&' + arr.join('&');
-
-    dispatch(changeFilter(queryString));
-    dispatch(clearItems([]));
+    dispatch(changeFilter(values));
   };
 
   return (
@@ -106,16 +91,14 @@ const Filter = () => {
             aria-labelledby="checkbox-group"
             className={css.filtersBlock}
           >
-            <label className={values.equipment.AC ? css.active : undefined}>
-              <Field type="checkbox" name="equipment.AC" />
+            <label className={values.AC ? css.active : undefined}>
+              <Field type="checkbox" name="AC" />
               <Icon id="icon-ac" width={32} height={32} />
               AC
             </label>
-            <label
-              className={values.equipment.transmission ? css.active : undefined}
-            >
+            <label className={values.transmission ? css.active : undefined}>
               <Icon id="icon-transmission" width={32} height={32} />
-              <Field name="equipment.transmission">
+              <Field name="transmission">
                 {({ field, form }) => (
                   <CustomSelectButtonTransmission
                     field={field}
@@ -125,29 +108,25 @@ const Filter = () => {
                 )}
               </Field>
             </label>
-            <label
-              className={values.equipment.kitchen ? css.active : undefined}
-            >
-              <Field type="checkbox" name="equipment.kitchen" />
+            <label className={values.kitchen ? css.active : undefined}>
+              <Field type="checkbox" name="kitchen" />
               <Icon id="icon-kitchen" width={32} height={32} />
               Kitchen
             </label>
-            <label className={values.equipment.TV ? css.active : undefined}>
-              <Field type="checkbox" name="equipment.TV" />
+            <label className={values.TV ? css.active : undefined}>
+              <Field type="checkbox" name="TV" />
               <Icon id="icon-tv" width={32} height={32} />
               TV
             </label>
-            <label
-              className={values.equipment.bathroom ? css.active : undefined}
-            >
-              <Field type="checkbox" name="equipment.bathroom" />
+            <label className={values.bathroom ? css.active : undefined}>
+              <Field type="checkbox" name="bathroom" />
               <Icon id="icon-bathroom" width={32} height={32} />
               Bathroom
             </label>
 
-            <label className={values.equipment.engine ? css.active : undefined}>
+            <label className={values.engine ? css.active : undefined}>
               <Icon id="icon-engine" width={32} height={32} />
-              <Field name="equipment.engine">
+              <Field name="engine">
                 {({ field, form }) => (
                   <CustomSelectButtonTransmission
                     field={field}
@@ -158,27 +137,23 @@ const Filter = () => {
               </Field>
             </label>
 
-            <label
-              className={values.equipment.refrigerator ? css.active : undefined}
-            >
-              <Field type="checkbox" name="equipment.refrigerator" />
+            <label className={values.refrigerator ? css.active : undefined}>
+              <Field type="checkbox" name="refrigerator" />
               <Icon id="icon-refrigerator" width={32} height={32} />
               Refrigerator
             </label>
-            <label
-              className={values.equipment.microwave ? css.active : undefined}
-            >
-              <Field type="checkbox" name="equipment.microwave" />
+            <label className={values.microwave ? css.active : undefined}>
+              <Field type="checkbox" name="microwave" />
               <Icon id="icon-microwave" width={32} height={32} />
               Microwave
             </label>
-            <label className={values.equipment.gas ? css.active : undefined}>
-              <Field type="checkbox" name="equipment.gas" />
+            <label className={values.gas ? css.active : undefined}>
+              <Field type="checkbox" name="gas" />
               <Icon id="icon-gas" width={32} height={32} />
               Gas
             </label>
-            <label className={values.equipment.water ? css.active : undefined}>
-              <Field type="checkbox" name="equipment.water" />
+            <label className={values.water ? css.active : undefined}>
+              <Field type="checkbox" name="water" />
               <Icon id="icon-water" width={32} height={32} />
               Water
             </label>
@@ -192,17 +167,17 @@ const Filter = () => {
             className={css.filtersBlock}
           >
             <label
-              className={values.type === 'panelTruck' ? css.active : undefined}
+              className={values.form === 'panelTruck' ? css.active : undefined}
             >
               <Field
                 type="radio"
-                name="type"
+                name="form"
                 value="panelTruck"
                 onClick={() => {
-                  if (values.type === 'panelTruck') {
-                    setFieldValue('type', '');
+                  if (values.form === 'panelTruck') {
+                    setFieldValue('form', '');
                   } else {
-                    setFieldValue('type', 'panelTruck');
+                    setFieldValue('form', 'panelTruck');
                   }
                 }}
               />
@@ -211,18 +186,18 @@ const Filter = () => {
             </label>
             <label
               className={
-                values.type === 'fullyIntegrated' ? css.active : undefined
+                values.form === 'fullyIntegrated' ? css.active : undefined
               }
             >
               <Field
                 type="radio"
-                name="type"
+                name="form"
                 value="fullyIntegrated"
                 onClick={() => {
-                  if (values.type === 'fullyIntegrated') {
-                    setFieldValue('type', '');
+                  if (values.form === 'fullyIntegrated') {
+                    setFieldValue('form', '');
                   } else {
-                    setFieldValue('type', 'fullyIntegrated');
+                    setFieldValue('form', 'fullyIntegrated');
                   }
                 }}
               />
@@ -230,17 +205,17 @@ const Filter = () => {
               Fully Integrated
             </label>
             <label
-              className={values.type === 'alcove' ? css.active : undefined}
+              className={values.form === 'alcove' ? css.active : undefined}
             >
               <Field
                 type="radio"
-                name="type"
+                name="form"
                 value="alcove"
                 onClick={() => {
-                  if (values.type === 'alcove') {
-                    setFieldValue('type', '');
+                  if (values.form === 'alcove') {
+                    setFieldValue('form', '');
                   } else {
-                    setFieldValue('type', 'alcove');
+                    setFieldValue('form', 'alcove');
                   }
                 }}
               />
